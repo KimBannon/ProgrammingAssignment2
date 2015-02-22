@@ -5,30 +5,30 @@
 makeCacheMatrix <- function(x = matrix()) {
 	inverse <- NULL  ##sets inverse to NULL as placeholder for future inverse
 
-## the set function allows you to define the matrix. The global << is used so 
-## you can use the object outside of the function
+	## the set function allows you to define the matrix. The global << is used  
+	## so you can use the object outside of the function
 	set <- function(y) {
 		x <<- y
 		inverse <<-NULL  ##looks in parent environment
 	}
-##returns the matrix x
+	
+	##returns the matrix x
 	get <- function() {
 		x
 	}    	##can also be written in shorter format get <-function()x 
 
-## the setinverse function is called in the cacheSolve function and assigns
-## the inverse. Hence the global << is required so it can be called outside	
+	## the setinverse function is called in the cacheSolve function assigning
+	## the inverse. Hence global << is required so it can be called outside	
 	setinverse <- function(inverse) inverse<<-inverse 
 
-## get function returns the inverse
+	## get function returns the inverse
 	getinverse <- function()inverse
 
-## returns the special vector containing all four functions.
+	## returns the special vector containing all four functions.
 	list(set = set, get = get,
 		setinverse = setinverse,
 		getinverse = getinverse)
 }
-
 
 
 ## This function computes the inverse of the special "matrix" returned 
